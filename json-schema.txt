@@ -1,0 +1,25 @@
+// this is an example
+
+// json object
+{
+    "productID": 1,
+    "productName": "product one"
+    "price": 50.70
+}
+
+// json schema
+const schema = {
+    type: "object",
+    required: ["productID", "productName"]
+    properties: {
+        "productID": {
+            description: "Unique ID of a product",
+            type: "integer"
+        },
+        "productName": {
+            description: "product name".
+            type: "string"
+            minLength: 10
+        }
+    }
+}
