@@ -1,0 +1,23 @@
+name: project-one-backend
+
+on:
+  push:
+    branches: [master]
+  pull-request:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      # happens one by one
+      - name: Install Dependencies
+        run: ./batect install-dep
+
+      - name: Run Test Cases
+        run: ./batect test-ci
+
+      - name: Perform Linting
+        run: ./batect lint
