@@ -7,9 +7,9 @@
     "start": "nodemon server.js",
     "test": "cross-env CI=true jest --coverage --detectOpenHandles --runInBand",
     "test:watch": "jest --watchAll --detectOpenHandles --runInBand",
-    "lint": "eslint **/*.js",
-    "lint:fix": "eslint **/*.js --fix",
-    "format": "prettier --write **/*.js"
+    "lint": "eslint \"**/*.js\"",
+    "lint:fix": "eslint \"**/*.js\" --fix",
+    "format": "prettier --write \"**/*.js\""
   },
   "author": "",
   "license": "ISC",
