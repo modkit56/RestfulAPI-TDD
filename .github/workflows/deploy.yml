@@ -14,7 +14,7 @@ jobs:
 
       # happens one by one
       - name: fixing permisson for batect
-        run: chmod +x batect.yml
+        run: chmod +x batect
 
       - name: Install Dependencies
         run: ./batect install-dep
