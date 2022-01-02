@@ -15,9 +15,7 @@ jobs:
       # happens one by one
       - name: Install Dependencies
         run: ./batect install-dep
-
       - name: Run Test Cases
         run: ./batect test-ci
-
       - name: Perform Linting
         run: ./batect lint
