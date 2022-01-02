@@ -13,9 +13,14 @@ jobs:
       - uses: actions/checkout@v2
 
       # happens one by one
+      - name: fixing permisson for batect
+        run: chmod +x batect.yml
+
       - name: Install Dependencies
         run: ./batect install-dep
+
       - name: Run Test Cases
         run: ./batect test-ci
+
       - name: Perform Linting
         run: ./batect lint
