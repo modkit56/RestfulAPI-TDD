@@ -2,7 +2,6 @@
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
-
 const server = require('./src/app')({
   logger: {
     level: 'info',
