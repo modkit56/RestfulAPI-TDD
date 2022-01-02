@@ -16,6 +16,7 @@ describe('Root Route', () => {
       url: '/',
     });
     expect(res.statusCode).toBe(200);
-    expect(res.json()).toEqual({ hello: 'world' });
+    // expect(res.json()).toEqual({ hello: 'world' });
+    expect(res.json()).toEqual({ nice: 'CI/CD Setup is Complete' });
   });
 });
