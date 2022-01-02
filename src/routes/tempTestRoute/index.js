@@ -1,19 +1,30 @@
 const tempService = require('../../service/temp.service');
-const { postRequestBody } = require('./temp.schema');
+const {
+  postRequestBody,
+  postResponse,
+  getResponseBody,
+} = require('./temp.schema');
 
 // api/v1/test
 const route = async (fastify) => {
-  // get route
   const { getAll, save } = tempService(fastify);
-  fastify.get('/', async (request, reply) => {
-    const allTest = await getAll();
-    reply.code(200).send(allTest);
-  });
+
+  // get route
+  fastify.get(
+    '/',
+    { schema: { response: getResponseBody } },
+    async (request, reply) => {
+      const allTest = await getAll();
+      reply.code(200).send({
+        temps: allTest,
+      });
+    }
+  );
 
   // post route
   fastify.post(
     '/',
-    { schema: { body: postRequestBody } },
+    { schema: { body: postRequestBody, response: postResponse } },
     async (request, reply) => {
       fastify.log.info(`request with body ${request}`);
       const { title } = request.body;
