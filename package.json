@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start-prod": "node server.js",
     "start": "nodemon server.js",
     "test": "cross-env CI=true jest --coverage --detectOpenHandles --runInBand",
     "test:watch": "jest --watchAll --detectOpenHandles --runInBand",

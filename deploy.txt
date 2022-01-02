@@ -1,0 +1,14 @@
+# heroku (for future references) [manual]
+
+1 - heroku login
+2 - login to heroku container registry and push docker image there
+    command -> heroku container:login
+3 - build docker image and post to heroku container registry (must have a docker file in directory)
+    command -> heroku container:push -a project-one-back-end web
+
+4 - run docker image on docker
+    command -> heroku container:release -a project-one-back-end web
+
+# deploy to heroku with github actions
+
+1 - heroku authorizations:create
