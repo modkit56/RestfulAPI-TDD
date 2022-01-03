@@ -2,7 +2,7 @@ const moment = require('moment');
 const UserRepository = require('../dal/user.dal');
 
 const userService = (fastify) => {
-  const userRepository = UserRepository(fastify);
+  const userRepository = UserRepository(fastify.db);
 
   // get user data by id
   const getUserById = async (userId) => {

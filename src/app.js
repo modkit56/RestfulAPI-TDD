@@ -1,7 +1,9 @@
 const fastify = require('fastify');
 const db = require('./plugin/database');
-const testRoute = require('./routes/tempTestRoute');
 const swaggerPg = require('./plugin/swagger');
+
+const testRoute = require('./routes/tempTestRoute');
+const userRoute = require('./routes/user');
 
 const build = (opts = {}) => {
   const app = fastify(opts);
@@ -10,8 +12,9 @@ const build = (opts = {}) => {
   app.register(db);
   app.register(swaggerPg);
 
-  // register route
+  // register routes
   app.register(testRoute, { prefix: 'api/v1/test' });
+  app.register(userRoute, { prefix: 'api/v1/users' });
 
   app.get('/', async (request, reply) => {
     reply.code(200).send({ nice: 'CI/CD Setup is Complete' });
