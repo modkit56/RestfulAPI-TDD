@@ -1,5 +1,5 @@
 const userRepository = (db) => {
-  // validation not done here in this layer
+  // validation not done here in this layer (this is done in service layer)
 
   // get user by user id
   const getUserById = async (userId) => {
