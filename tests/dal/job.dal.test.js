@@ -32,6 +32,7 @@ describe('Job Repository', () => {
     await app.db.query('delete from jobs');
   });
 
+  // save
   it('should save job data in db', async () => {
     const futureDate = moment().add(4, 'day').format('YYYY-MM-DD');
     const { save } = jobRepository(app.db);
@@ -65,6 +66,7 @@ describe('Job Repository', () => {
     ).rejects.toThrow(Error('Failed to save in database'));
   });
 
+  // getAll
   it('should get job data', async () => {
     const futureDate = moment().add(4, 'day').format('YYYY-MM-DD');
     const { save, getAll } = jobRepository(app.db);
