@@ -1,12 +1,49 @@
-// const UserService = require('../../service/user.service');
+const UserService = require('../../service/user.service');
+const {
+  postRequestBody,
+  postResponseBody,
+  getRequestParams,
+  getResponseBody,
+} = require('./user.schema');
 
-// // make sure to mark function as async
-// const userRoute = async (fastify) => {
-// //   const { getUserById, createUser } = UserService(fastify);
+// make sure to mark function as async
+const userRoute = async (fastify) => {
+  const { getUserById, createUser } = UserService(fastify);
 
-// //   fastify.get('/:userId', async (request, reply) => {});
+  fastify.get(
+    '/:userId',
+    {
+      schema: {
+        params: getRequestParams,
+        response: getResponseBody,
+      },
+    },
+    async (request, reply) => {
+      const { userId } = request.params;
+      try {
+        const user = await getUserById(userId);
+        reply.code(200).send(user);
+      } catch (error) {
+        reply.code(404).send(error);
+      }
+    }
+  );
 
-// //   fastify.post('/', async (request, reply) => {});
-// };
+  fastify.post(
+    '/',
+    { schema: { body: postRequestBody, response: postResponseBody } },
+    async (request, reply) => {
+      fastify.log.info('creating user');
 
-// module.exports = userRoute;
+      try {
+        const userId = await createUser(request.body);
+        fastify.log.info(`user created with userId ${userId}`);
+        reply.code(201).send({ userId });
+      } catch (error) {
+        reply.code(400).send(error);
+      }
+    }
+  );
+};
+
+module.exports = userRoute;
