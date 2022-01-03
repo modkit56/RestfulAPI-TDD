@@ -5,7 +5,7 @@ CREATE TABLE users (
     last_name VARCHAR(100),
     password VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    created_at timestamp NOT NULL DEFAULT now(),
-    updated_at timestamp NOT NULL DEFAULT now(),
+    created_at timestamptz NOT NULL DEFAULT now(),
+    updated_at timestamptz NOT NULL DEFAULT now(),
     version UUID NOT NULL DEFAULT gen_random_uuid() /*for optimistic locking*/
 )

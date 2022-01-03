@@ -1,12 +1,11 @@
 const UserService = require('../../src/service/user.service');
 const UserRepository = require('../../src/dal/user.dal');
 
-// mocking the data access layer (dal)
+// mocking the data access layer (dal) [ user.dal.js ]
 const getUserByIdDal = jest.fn();
 const saveUser = jest.fn();
 
 jest.mock('../../src/dal/user.dal');
-// const { getUserById, createUser } = UserService({});
 
 describe('user service', () => {
   beforeAll(() => {
@@ -41,6 +40,9 @@ describe('user service', () => {
       last_name: 'parker',
       password: 'password',
       email: 'email',
+      created_at: '2022-01-01 13:46:33.934071+00',
+      updated_at: '2022-01-01 13:46:33.934071+00',
+      version: '1',
     });
 
     const user = await getUserById('user_uuid');
@@ -49,17 +51,23 @@ describe('user service', () => {
       id: 'uuid',
       username: 'peter middlename parker',
       email: 'email',
+      created_at: '01/01/2022',
+      updated_at: '01/01/2022',
+      version: '1',
     });
   });
 
   // business logic test
-  it('should return user with correct username', async () => {
+  it('should return user with correct information', async () => {
     const { getUserById } = UserService({});
     getUserByIdDal.mockReturnValueOnce({
       id: 'uuid',
       first_name: 'peter',
       password: 'password',
       email: 'email',
+      created_at: '2022-01-01 13:46:33.934071+00', // some sample timestamptz
+      updated_at: '2022-01-01 13:46:33.934071+00',
+      version: 'some uuid',
     });
 
     const user = await getUserById('user_uuid');
@@ -68,6 +76,9 @@ describe('user service', () => {
       id: 'uuid',
       username: 'peter',
       email: 'email',
+      created_at: '01/01/2022', // dd-mm-yyyy
+      updated_at: '01/01/2022',
+      version: 'some uuid',
     });
   });
 });

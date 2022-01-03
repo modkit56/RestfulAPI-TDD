@@ -1,3 +1,4 @@
+const moment = require('moment');
 const UserRepository = require('../dal/user.dal');
 
 const userService = (fastify) => {
@@ -18,6 +19,9 @@ const userService = (fastify) => {
       id: user.id,
       username,
       email: user.email,
+      created_at: moment(user.created_at).format('DD/MM/YYYY'),
+      updated_at: moment(user.updated_at).format('DD/MM/YYYY'),
+      version: user.version,
     };
   };
 
