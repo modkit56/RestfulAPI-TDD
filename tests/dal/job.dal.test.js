@@ -40,10 +40,10 @@ describe('Job Repository', () => {
       title: 'title test',
       description: 'description',
       skills: 'skills',
-      min_budget: 100,
-      max_budget: 200,
-      expired_at: futureDate,
-      user_id: userId,
+      minBudget: 100,
+      maxBudget: 200,
+      expiredAt: futureDate,
+      userId,
     });
 
     expect(jobId).toBeDefined();
@@ -75,20 +75,20 @@ describe('Job Repository', () => {
       title: 'title test 1',
       description: 'description 1',
       skills: 'skills 1',
-      min_budget: 100,
-      max_budget: 200,
-      expired_at: futureDate,
-      user_id: userId,
+      minBudget: 100,
+      maxBudget: 200,
+      expiredAt: futureDate,
+      userId,
     });
 
     await save({
       title: 'title test 2',
       description: 'description 2',
       skills: 'skills 2',
-      min_budget: 100,
-      max_budget: 200,
-      expired_at: futureDate,
-      user_id: userId,
+      minBudget: 100,
+      maxBudget: 200,
+      expiredAt: futureDate,
+      userId,
     });
 
     const jobs = await getAll(1, 0); // limits: 1 record, offset: how many we want to skip from start
@@ -109,20 +109,20 @@ describe('Job Repository', () => {
       title: 'title test 1',
       description: 'description 1',
       skills: 'skills 1',
-      min_budget: 100,
-      max_budget: 200,
-      expired_at: futureDate,
-      user_id: userId,
+      minBudget: 100,
+      maxBudget: 200,
+      expiredAt: futureDate,
+      userId,
     });
 
     await save({
       title: 'title test 2',
       description: 'description 2',
       skills: 'skills 2',
-      min_budget: 100,
-      max_budget: 200,
-      expired_at: '2000-01-01', // has expired already
-      user_id: userId,
+      minBudget: 100,
+      maxBudget: 200,
+      expiredAt: '2000-01-01', // has expired already
+      userId,
     });
 
     const jobs = await getAll(2, 0); // limits: 1 record, offset: how many we want to skip from start

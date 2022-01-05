@@ -13,6 +13,7 @@ describe('User Repository', () => {
 
   // in case local container is running and we don't want persistant data
   beforeEach(async () => {
+    await app.db.query('delete from jobs');
     await app.db.query('delete from users');
   });
 

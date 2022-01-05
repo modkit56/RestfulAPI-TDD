@@ -1,11 +1,23 @@
 const moment = require('moment');
 const JobService = require('../../service/job.service');
-const { postRequestBody } = require('./job.schema');
+const { postRequestBody, queryParameter } = require('./job.schema');
 
 const jobRoute = async (fastify) => {
   const { createJob, getJobs } = JobService(fastify);
 
-  fastify.get('/', async (request, reply) => {});
+  fastify.get(
+    '/',
+    {
+      schema: {
+        querystring: queryParameter,
+      },
+    },
+    async (request, reply) => {
+      const { limit, offset } = request.query;
+      const jobs = await getJobs(limit, offset);
+      reply.code(200).send({ jobs });
+    }
+  );
 
   fastify.post(
     '/',

@@ -12,10 +12,10 @@ const jobRepository = (db) => {
           job.title,
           job.description,
           job.skills,
-          job.min_budget,
-          job.max_budget,
-          job.expired_at,
-          job.user_id,
+          job.minBudget,
+          job.maxBudget,
+          job.expiredAt,
+          job.userId,
         ]
       );
       return id;

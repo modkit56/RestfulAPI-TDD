@@ -110,4 +110,21 @@ describe('job route', () => {
   });
 
   // GET TESTS
+  it('should return 200 when limit and offset present', async () => {
+    getJobs.mockImplementation(() => ({ title: 'title' }));
+    const res = await app.inject({
+      method: 'GET',
+      url: 'api/v1/jobs?limit=1&offset=0',
+    });
+    expect(res.statusCode).toEqual(200);
+  });
+
+  it('should return 200 when limit and offset is not present', async () => {
+    getJobs.mockImplementation(() => ({ title: 'title' }));
+    const res = await app.inject({
+      method: 'GET',
+      url: 'api/v1/jobs',
+    });
+    expect(res.statusCode).toEqual(400);
+  });
 });
