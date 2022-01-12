@@ -1,7 +1,7 @@
 # A Well-Designed and Tested Restful API
 A 3-Layer Restful-API made using Fastify.js (in Node.js) with a Test-Driven-Development approach.
 
-Documentation: https://project-one-back-end.herokuapp.com/swagger/static/index.html
+Documentation: https://project-one-back-end.herokuapp.com/swagger/static/index.html (the request will fail cause it's requesting to localhost:5000)
 
 The idea is to divide the RestfulAPI into three abstract layers namely:
 
